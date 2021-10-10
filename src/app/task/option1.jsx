@@ -138,9 +138,10 @@ class TaskDetail extends React.Component {
         const { defaultValue, applicationType } = this.props;
         const userInfo = getUserInfo();
         const isDes = !!Object.keys(defaultValue).length;
-        const isTagetTask =
-            defaultValue.statusStep !== -1 &&
-            defaultValue.process[defaultValue.statusStep].directorId === userInfo.id;
+        const isTagetTask = defaultValue.process
+            ? defaultValue.statusStep !== -1 &&
+              defaultValue.process[defaultValue.statusStep].directorId === userInfo.id
+            : false;
         const formArr = [
             {
                 type: 'select',
