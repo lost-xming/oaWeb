@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Form, Select, DatePicker, Upload, Button, Radio, TreeSelect } from 'antd';
+import { Input, Form, Select, DatePicker, Upload, Button, Radio, TreeSelect, Image } from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import './index.css';
@@ -10,6 +10,7 @@ const { Option } = Select;
 const { TreeNode } = TreeSelect;
 const noFun = () => { };
 const Format = 'YYYY-MM-DD';
+const Format2 = 'YYYY-MM-DD h:mm';
 export const FormInputItem = (item = {}, defaultValue = {}) => {
     const {
         required,
@@ -22,6 +23,7 @@ export const FormInputItem = (item = {}, defaultValue = {}) => {
         onBlurFun,
         extra,
         addonAfter,
+        suffix,
         onEnter,
         disabled,
         inpuType,
@@ -52,13 +54,32 @@ export const FormInputItem = (item = {}, defaultValue = {}) => {
                 disabled={disabled}
                 type={inpuType}
                 onBlur={onBlurFun}
+                allowClear
                 onPressEnter={onEnterFun}
                 style={style}
+                suffix={suffix}
                 maxLength={maxLength}
                 className={className}
                 onChange={onChangeFun}
                 placeholder={placeholderStr}
             />
+        </Form.Item>
+    );
+};
+export const FormDesInputItem = (item = {}, defaultValue = {}) => {
+    const {
+        required,
+        name,
+        label,
+    } = item;
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            required={required}
+            initialValue={defaultValue[name]}
+        >
+            {defaultValue[name]}
         </Form.Item>
     );
 };
@@ -138,7 +159,48 @@ export const FormSelectItem = (item = {}, defaultValue = {}) => {
     );
 };
 
+export const FormDesSelectItem = (item = {}, defaultValue = {}) => {
+    const { required, name, label, arr, extra } = item;
+    const valueArr = arr.filter(it => it.value === defaultValue[name]);
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            extra={extra}
+            initialValue={defaultValue[name]}
+            required={required}
+        >
+            {(valueArr && valueArr.length) ? (valueArr[0].lab || valueArr[0].label) : ''}
+        </Form.Item>
+    );
+};
+
 export const FormTimerItem = (item = {}, defaultValue = {}) => {
+    const { required, validator, onChange, name, showTime = false, label, extra, disabled, others = {} } = item;
+    const rules = validator ? [{ validator }] : [{ type: 'object', required, message: `请输入${label}` }];
+    const onChangeFun = onChange || noFun;
+    return (
+        <Form.Item
+            key={name}
+            name={name}
+            label={label}
+            extra={extra}
+            initialValue={defaultValue[name] ? moment(defaultValue[name]) : null}
+            rules={rules}
+            {...others}
+        >
+            <DatePicker
+                className="date_picker_style"
+                disabled={disabled}
+                showTime={showTime}
+                onChange={(value, timer) => onChangeFun(value, timer, item)}
+                format={showTime ? Format2 : Format}
+            />
+        </Form.Item>
+    );
+};
+
+export const FormHHTimerItem = (item = {}, defaultValue = {}) => {
     const { required, validator, onChange, name, label, extra, disabled, others = {} } = item;
     const rules = validator ? [{ validator }] : [{ type: 'object', required, message: `请输入${label}` }];
     const onChangeFun = onChange || noFun;
@@ -155,9 +217,25 @@ export const FormTimerItem = (item = {}, defaultValue = {}) => {
             <DatePicker
                 className="date_picker_style"
                 disabled={disabled}
+                showTime
                 onChange={(value, timer) => onChangeFun(value, timer, item)}
-                format={Format}
+                format={Format2}
             />
+        </Form.Item>
+    );
+};
+
+export const FormDesHHTimerItem = (item = {}, defaultValue = {}) => {
+    const { required, name, label, extra } = item;
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            extra={extra}
+            initialValue={defaultValue[name] ? moment(defaultValue[name]) : null}
+            required={required}
+        >
+            { defaultValue[name] }
         </Form.Item>
     );
 };
@@ -208,8 +286,26 @@ export const FormTextAreaItem = (item = {}, defaultValue = {}) => {
                 onBlur={onBlurFun}
                 onChange={onChangeFun}
                 placeholder={placeholderStr}
+                autoSize={{ minRows: 2, maxRows: 6 }}
+                maxLength={200}
+                showCount
                 rows={4}
             />
+        </Form.Item>
+    );
+};
+
+export const FormDesTextAreaItem = (item = {}, defaultValue = {}) => {
+    const { required, name, label, extra } = item;
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            required={required}
+            initialValue={defaultValue[name]}
+            extra={extra}
+        >
+            {defaultValue[name]}
         </Form.Item>
     );
 };
@@ -239,7 +335,18 @@ export const FormRadioItem = (item = {}, defaultValue = {}) => {
 };
 
 export const FormFileItem = (item = {}, defaultValue = {}) => {
-    const { required, name, label, url, extra, validator, onChange, beforeUpload, normFile, others = {} } = item;
+    const {
+        required,
+        name,
+        label,
+        disabled,
+        url,
+        extra,
+        validator,
+        onChange,
+        beforeUpload,
+        normFile,
+        others = {} } = item;
     const rules = validator ? [{ validator }] : [{ required, message: `请上传${label}` }];
     const onChangeFun = onChange || noFun;
     const normFileFun = normFile || noFun;
@@ -262,6 +369,7 @@ export const FormFileItem = (item = {}, defaultValue = {}) => {
             <Upload
                 name="file"
                 action={url}
+                disabled={disabled}
                 listType="picture"
                 beforeUpload={beforeUploadFun}
                 onChange={onChangeFun}
@@ -269,10 +377,35 @@ export const FormFileItem = (item = {}, defaultValue = {}) => {
                     token,
                 }}
             >
-                <Button className="add_file_btn">
+                <Button disabled={disabled} className="add_file_btn">
                     <CloudUploadOutlined /> 上传
                 </Button>
             </Upload>
+        </Form.Item>
+    );
+};
+
+export const FormDesFileItem = (item = {}, defaultValue = {}) => {
+    const {
+        required,
+        name,
+        label,
+        extra,
+    } = item;
+    const imgs = defaultValue[name] ? defaultValue[name] : [];
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            required={required}
+            initialValue={defaultValue[name] || []}
+            extra={extra}
+        >
+            <Image.PreviewGroup>
+                {imgs.map((it, index) => {
+                    return <Image key={`${index}_img`} width={50} src={it} />;
+                })}
+            </Image.PreviewGroup>
         </Form.Item>
     );
 };

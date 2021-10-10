@@ -90,9 +90,54 @@ export const exportExcelFile = (data, name, type = 'xlsx') => {
 	URL.revokeObjectURL(objectUrl); // 释放内存
 };
 
+export const setTreeDataFun = (arr, id = '') => {
+	const newArr = [];
+	arr.map(item => {
+		if (item.parent === id) {
+			const childrenArr = arr.filter(it => it.parent === item.id);
+			if (childrenArr.length) {
+				childrenArr.map(it => {
+					const childrenItemArr = setTreeDataFun(arr, it.id);
+					it.children = childrenItemArr;
+					return null;
+				});
+				item.children = childrenArr;
+			}
+		}
+		if (item.parent === id) {
+			newArr.push(item);
+		}
+		return null;
+	});
+	return newArr;
+ };
+
 export const directorArr = [
     { value: 0, label: '直接主管' },
     { value: 1, label: '二级主管' },
     { value: 2, label: '三级主管' },
     { value: 3, label: '四级主管' },
+];
+
+export const statusArr = [
+	{
+		value: 0,
+		label: '审批中',
+		color: '#333',
+	},
+	{
+		value: 1,
+		label: '已撤销',
+		color: '#999',
+	},
+	{
+		value: 2,
+		label: '审核未通过',
+		color: '#cf1322',
+	},
+	{
+		value: 3,
+		label: '审核通过',
+		color: '#389e0d',
+	},
 ];

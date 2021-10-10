@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Table, Badge, Button, Switch, Input, Tree, Spin } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import StaffSearch from '../../components/searchBox/staff';
+import { setTreeDataFun } from '../../utils/index';
 import AddModal from './addPersonnel';
 import './index.less';
 
@@ -49,7 +50,7 @@ class Staff extends React.Component {
             pagePersonnelList: personnelList,
         });
         this.initData();
-        this.generateList(departmentList);
+        this.generateList(setTreeDataFun(departmentList));
     }
 
     componentWillUnmount() {
@@ -181,7 +182,7 @@ class Staff extends React.Component {
         const expandedKeys = dataList
             .map((item) => {
                 if (item.title.indexOf(value) > -1) {
-                    const newList = this.getParentKey(item.key, departmentList);
+                    const newList = this.getParentKey(item.key, setTreeDataFun(departmentList));
                     return newList;
                 }
                 return null;
@@ -229,6 +230,13 @@ class Staff extends React.Component {
         const { params, modalVisiable, pagePersonnelList, loading, treeSelectId } = this.state;
         const columns = [
             { title: '姓名', dataIndex: 'name', key: 'name' },
+            {
+                title: '职务',
+                dataIndex: 'director',
+                render: (text) => {
+                    return treeSelectId !== '' && text.indexOf(treeSelectId) > -1 ? '部门主管' : '';
+                },
+            },
             {
                 title: '账号状态',
                 dataIndex: 'status',
@@ -312,7 +320,7 @@ class Staff extends React.Component {
                             onExpand={this.onExpand}
                             expandedKeys={expandedKeys}
                             autoExpandParent={autoExpandParent}
-                            treeData={loop(departmentList)}
+                            treeData={loop(setTreeDataFun(departmentList))}
                             onSelect={this.onTreeSelect}
                         />
                     </div>

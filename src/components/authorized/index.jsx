@@ -7,7 +7,6 @@ const Authorized = (props) => {
         ...JSON.parse(localStorage.getItem('oaUserInfo')),
     };
     const hasUserInfo = Object.keys(userInfoData).length;
-    console.log(333, userInfoData);
     if (!hasUserInfo) {
         return login;
     }

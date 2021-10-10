@@ -2,7 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import { Tree, Button, Radio, Select } from 'antd';
-import { directorArr } from '../../utils/index';
+import { directorArr ,setTreeDataFun} from '../../utils/index';
 // import FormCom from '../../components/searchCom/formCom';
 import './cardPage.less';
 
@@ -241,7 +241,8 @@ class CardInfo extends React.Component {
     _renderTargetPersonnel() {
         const { personnelList, departmentList } = this.props;
         const { personnelTargetId, expandedKeys } = this.state;
-        const treeData = this.resetData(personnelList, departmentList);
+        const newTreeList = setTreeDataFun(departmentList);
+        const treeData = this.resetData(personnelList, newTreeList);
         return (
             <div>
                 <div className="tips">不能超过20人</div>

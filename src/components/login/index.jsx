@@ -56,7 +56,49 @@ class Login extends React.Component {
         if (checked) {
             setLoginInfo(values);
         }
-        setUserInfo(values);
+        switch (values.name) {
+            case '1':
+                // 李女士6
+                setUserInfo({
+                    createTime: '2021-10-07 12:00:01',
+                    departments: '2,4,7',
+                    director: '',
+                    id: 6,
+                    jobTitle: '生产小兵',
+                    mobile: '15122223333',
+                    name: '李女士6',
+                    status: 1,
+                });
+                break;
+            case '2':
+                // 王先生2
+                setUserInfo({
+                    createTime: '2021-10-07 12:00:01',
+                    departments: '2,3,4',
+                    director: '',
+                    id: 2,
+                    jobTitle: '设计主管',
+                    mobile: '15122225555',
+                    name: '王先生2',
+                    status: 1,
+                });
+                break;
+            case '3':
+                // 王先生1
+                setUserInfo({
+                    createTime: '2021-10-07 12:00:01',
+                    departments: '1,2,3',
+                    director: '',
+                    id: 6,
+                    jobTitle: '总裁',
+                    mobile: '15122223333',
+                    name: '王先生1',
+                    status: 1,
+                });
+                break;
+            default:
+                break;
+        }
         history.push('/');
     };
 

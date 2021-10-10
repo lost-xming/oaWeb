@@ -15,7 +15,7 @@ import {
 import Breadcrumb from '@/components/breadcrumb';
 import imgbase from '../../images/image.png';
 import { appRouters } from '../../router/router';
-import { clearUserInfo } from '../../utils/localStorageSet';
+import { clearUserInfo, getUserInfo } from '../../utils/localStorageSet';
 // import { getStoreUserInfo } from '@/utils/index';
 // import MessageList from '../messageList';
 import './index.less';
@@ -25,26 +25,24 @@ const { SubMenu } = Menu;
 const { Header } = Layout;
 class HeaderCom extends React.Component {
 	static propTypes = {
-		collapsed: PropTypes.bool,
 		loginOut: PropTypes.func,
-		getMessageUnReadList: PropTypes.func,
-		setCollapsed: PropTypes.func,
 		history: PropTypes.object,
 		location: PropTypes.object,
+		taskList: PropTypes.array,
 	};
 
 	static defaultProps = {
-		collapsed: false,
 		loginOut: () => { },
-		getMessageUnReadList: () => { },
-		setCollapsed: () => { },
 		location: {},
+		history: {},
+		taskList: [],
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			current: 'mail',
+			num: 0,
 		};
 	}
 
@@ -57,16 +55,22 @@ class HeaderCom extends React.Component {
     }
 
 	initData = async () => {
-
+		const { taskList } = this.props;
+		const oaUserInfo = getUserInfo();
+		const newData = taskList.filter((item) => {
+			// 待处理
+			return (
+				item.statusStep !== -1 &&
+				item.process[item.statusStep].directorId === oaUserInfo.id
+			);
+		});
+		this.setState({
+			num: newData.length,
+		});
 	}
 
-	toggle = () => {
-		const { setCollapsed, collapsed } = this.props;
-		setCollapsed(!collapsed);
-	};
-
 	loginOutFun = () => {
-		const that = this;
+		const { history } = this.props;
 		Modal.confirm({
 			title: '提示',
 			icon: <ExclamationCircleOutlined />,
@@ -74,22 +78,11 @@ class HeaderCom extends React.Component {
 			okText: '确认',
 			onOk: () => {
 				clearUserInfo();
-				that.props.history.push('/login');
+				history.push('/login');
 			},
 			cancelText: '取消',
 		});
 	}
-
-	creatIcon = () => {
-		const { collapsed } = this.props;
-		return React.createElement(
-			collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-			{
-				className: 'trigger',
-				onClick: this.toggle,
-			},
-		);
-	};
 
 	renderTitle = (value) => <span>{value}<DownOutlined className="submenu_icon" /></span>;
 
@@ -98,6 +91,9 @@ class HeaderCom extends React.Component {
 		return (
 			<Menu className="menu_list" onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
 				{appRouters.map((item) => {
+					if (item.isNotShow) {
+						return null;
+					}
 					if (!item.children || !item.children.length) {
 						return (
 							<Menu.Item className="menu_item" key={item.path}>
@@ -105,24 +101,28 @@ class HeaderCom extends React.Component {
 							</Menu.Item>
 						);
 					}
-						return (
-							<SubMenu className="menu_item" key={item.path} title={this.renderTitle(item.title)}>
-								{item.children.map((it) => {
-									return (
-										<Menu.Item key={it.path}>
-											<Link to={`${it.path}`}> {it.title} </Link>
-										</Menu.Item>
-									);
-								})}
-							</SubMenu>
-						);
+					return (
+						<SubMenu className="menu_item" key={item.path} title={this.renderTitle(item.title)}>
+							{item.children.map((it) => {
+								if (it.isNotShow) {
+									return null;
+								}
+								return (
+									<Menu.Item key={it.path}>
+										<Link to={`${it.path}`}> {it.title} </Link>
+									</Menu.Item>
+								);
+							})}
+						</SubMenu>
+					);
 				})}
 			</Menu>
 		);
 	}
 
 	_renderHomeTitle() {
-		const { current } = this.state;
+		const { current, num } = this.state;
+		const oaUserInfo = getUserInfo();
 		const renderAdmin = (
 			<div className="user_info">
 				<Image
@@ -131,7 +131,7 @@ class HeaderCom extends React.Component {
 					preview={false}
 					src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
 				/>
-				<span className="user_name">小明</span>
+				<span className="user_name">{oaUserInfo.name}</span>
 			</div>
 		);
 		return (
@@ -153,12 +153,15 @@ class HeaderCom extends React.Component {
 				<Menu className="menu_list" onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
 						<SubMenu className="user_menu_item" key="user" title={renderAdmin}>
 							<Menu.Item key="user1"><EditOutlined className="user_icon" />编辑资料</Menu.Item>
-							<Menu.Item key="user2" onClick={this.loginOutFun}><LogoutOutlined className="user_icon" />退出登录</Menu.Item>
+							<Menu.Item key="user2" onClick={this.loginOutFun}>
+								<LogoutOutlined className="user_icon" />退出登录
+							</Menu.Item>
 						</SubMenu>
 					</Menu>
 					<div className="home_title_right_tip">
 						<span className="home_title_right_tip_text">待审批</span>
-						<Badge count={10} overflowCount={99} />
+						{ num ? <Badge count={num} overflowCount={99} /> : null }
+
 					</div>
 				</Col>
 			</Row>
@@ -172,7 +175,8 @@ class HeaderCom extends React.Component {
 			<Fragment>
 				<Header className="site-layout-header">
 					{this._renderHomeTitle() }
-					{/* { (pathname === '/' || pathname === '') ? this._renderHomeTitle() : <Breadcrumb key={pathname} />} */}
+					{/* { (pathname === '/' || pathname === '') ?
+					this._renderHomeTitle() : <Breadcrumb key={pathname} />} */}
 				</Header>
 			</Fragment>
 		);
@@ -181,14 +185,12 @@ class HeaderCom extends React.Component {
 
 const mapState = (state = {}) => {
 	return {
-		collapsed: state.SiderStore.collapsed,
+		taskList: state.Common.taskList,
 	};
 };
 const mapDispatch = (dispatch) => {
 	return {
-		setCollapsed: dispatch.SiderStore.setCollapsedAction,
 		loginOut: dispatch.Common.loginOut,
-		getMessageUnReadList: dispatch.Common.getMessageUnReadList,
 	};
 };
 export default connect(mapState, mapDispatch)(withRouter(HeaderCom));

@@ -14,11 +14,12 @@ class TableCom extends Component {
 	    onSelectRowChange: Proptypes.func,
 	    getCheckboxProps: Proptypes.func,
 	    loading: Proptypes.bool,
-	    title: Proptypes.func,
+	    title: Proptypes.bool,
 	    pageSize: Proptypes.number,
 	    onShowSizeChange: Proptypes.func,
 		onPageChange: Proptypes.func,
 		selectedRowKeys: Proptypes.array,
+		onRow: Proptypes.func,
 	};
 
 	static defaultProps = {
@@ -32,9 +33,10 @@ class TableCom extends Component {
 	    onSelectRowChange: () => { },
 	    getCheckboxProps: () => { },
 	    loading: false,
-	    title: () => { },
+	    title: false,
 	    onShowSizeChange: () => { },
 		onPageChange: () => { },
+		onRow: () => { },
 		selectedRowKeys: [],
 	    pageSize: 10,
 	};

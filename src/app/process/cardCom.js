@@ -69,7 +69,7 @@ const mapDispatch = (dispatch) => {
 };
 const mapState = (state) => {
     return {
-        departmentList: state.Common.departmentList,
+        // departmentList: state.Common.departmentList,
     };
 };
 export default connect(mapState, mapDispatch)(AddDepartment);

@@ -9,12 +9,12 @@ import './cardPage.less';
 
 class CardPage extends React.Component {
     static propTypes = {
-        departmentList: PropType.array,
+        // departmentList: PropType.array,
         personnelList: PropType.array,
     };
 
     static defaultProps = {
-        departmentList: [],
+        // departmentList: [],
         personnelList: [],
     };
 
@@ -186,7 +186,7 @@ const mapDispatch = (dispatch) => {
 };
 const mapState = (state) => {
     return {
-        departmentList: state.Common.departmentList,
+        // departmentList: state.Common.departmentList,
         personnelList: state.Common.personnelList,
     };
 };

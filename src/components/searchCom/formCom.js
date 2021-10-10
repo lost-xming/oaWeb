@@ -4,7 +4,8 @@ import {
 	FormInputItem,
 	FormInputItem2,
     FormSelectItem,
-    FormTimerItem,
+	FormTimerItem,
+	FormHHTimerItem,
     FormTextAreaItem,
     FormFileItem,
 	FormRadioItem,
@@ -38,7 +39,9 @@ class SearchCom extends Component {
 	            case 'select':
 	                return FormSelectItem(item, defaultValue);
 	            case 'timer':
-	                return FormTimerItem(item, defaultValue);
+					return FormTimerItem(item, defaultValue);
+				case 'hsTimer':
+					return FormHHTimerItem(item, defaultValue);
 	            case 'textArea':
 	                return FormTextAreaItem(item, defaultValue);
 	            case 'file':

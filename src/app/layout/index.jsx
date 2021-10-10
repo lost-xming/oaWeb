@@ -43,7 +43,6 @@ class LayoutCom extends Component {
         }
         return (
             <Layout className="layout_box">
-                {/* <Sider key={`silder_${loading ? 1 : 2}`} siderRoute={siderRoute} /> */}
                 <Layout className="site-layout">
                     <HeaderCom />
                     <Content className="site-layout-content">

@@ -2,7 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import { Form, Button, Modal } from 'antd';
-import { formItemLayout } from '../../utils/index';
+import { formItemLayout, setTreeDataFun } from '../../utils/index';
 import FormCom from '../../components/searchCom/formCom';
 import './index.less';
 
@@ -103,7 +103,7 @@ class AddDepartment extends React.Component {
 	            type: 'treeSelect',
 	            name: 'department',
                 label: '部门',
-                arr: departmentList,
+                arr: setTreeDataFun(departmentList),
                 multiple: true,
                 onChange: this.onSuperiorChange,
                 required: true,

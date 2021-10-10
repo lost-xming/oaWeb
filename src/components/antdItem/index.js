@@ -20,6 +20,7 @@ export const AntdTable = (params = {}) => {
         loading = false,
         title = null,
         bordered = false,
+        onRow,
     } = params;
 
     const paginationObj = pagination ? {
@@ -88,6 +89,7 @@ export const AntdTable = (params = {}) => {
             loading={loading}
             scroll={scrollItem}
             title={title}
+            onRow={onRow}
         />
     );
 };

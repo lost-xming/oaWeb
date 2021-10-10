@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Table, Badge, Button, Switch } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import DepartmentSearch from '../../components/searchBox/department';
+import { setTreeDataFun } from '../../utils/index';
 import AddModal from './addDepartment';
 import './index.less';
 
@@ -109,8 +110,9 @@ class Department extends React.Component {
         this.setState({
             params,
         });
+        const newTreeList = setTreeDataFun(departmentList);
         // 过滤 data值
-        const newList = departmentList.filter((item) => {
+        const newList = newTreeList.filter((item) => {
             const itemNames = [];
             itemNames.push(item.name);
             if (item.children && Array.isArray(item.children)) {
@@ -212,7 +214,7 @@ class Department extends React.Component {
                 icon: 'SwitcherOutlined',
             },
         ];
-        const dataList = Object.keys(params).length ? newList : departmentList;
+        const dataList = Object.keys(params).length ? newList : setTreeDataFun(departmentList);
         return (
             <div className="department_page">
                 <DepartmentSearch

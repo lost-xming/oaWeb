@@ -4,7 +4,8 @@ const Home = asyncComponent(() => import('../app/home/index'));
 const Login = asyncComponent(() => import('../app/login/index'));
 const Department = asyncComponent(() => import('../app/department/index'));
 const Staff = asyncComponent(() => import('../app/staff/index'));
-const Process = asyncComponent(() => import('../app/process/index'));
+const Task = asyncComponent(() => import('../app/task/index'));
+const TaskDetail = asyncComponent(() => import('../app/task/detail'));
 
 export const appRouters = [
     {
@@ -26,7 +27,13 @@ export const appRouters = [
             {
                 path: '/project/task',
                 title: '任务管理',
-                component: Home,
+                component: Task,
+            },
+            {
+                path: '/project/taskDetail',
+                isNotShow: true,
+                title: '任务管理详情',
+                component: TaskDetail,
             },
             {
                 path: '/project/logs',
@@ -57,7 +64,7 @@ export const appRouters = [
             {
                 path: '/maintain/process',
                 title: '流程设计',
-                component: Process,
+                component: Task,
             },
         ],
     },
