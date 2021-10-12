@@ -5,15 +5,24 @@ const Login = asyncComponent(() => import('../app/login/index'));
 const Department = asyncComponent(() => import('../app/department/index'));
 const Staff = asyncComponent(() => import('../app/staff/index'));
 const Task = asyncComponent(() => import('../app/task/index'));
+const Process = asyncComponent(() => import('../app/process/index'));
+const ProcessSetting = asyncComponent(() => import('../app/process/setting'));
 const TaskDetail = asyncComponent(() => import('../app/task/detail'));
+const Project = asyncComponent(() => import('../app/project/index'));
 
 export const appRouters = [
     {
         exact: true,
         path: '/',
-        title: '申请',
-        // hasNotShow: true,
+        title: '首页',
+        isNotShow: true,
         component: Home,
+    },
+    {
+        exact: true,
+        path: '/process',
+        title: '申请',
+        component: Process,
     },
     {
         path: '/project',
@@ -22,7 +31,7 @@ export const appRouters = [
             {
                 path: '/project/manage',
                 title: '项目管理',
-                component: Home,
+                component: Project,
             },
             {
                 path: '/project/task',
@@ -62,9 +71,9 @@ export const appRouters = [
                 component: Home,
             },
             {
-                path: '/maintain/process',
-                title: '流程设计',
-                component: Task,
+                path: '/maintain/processSetting',
+                title: '请假流程设置',
+                component: ProcessSetting,
             },
         ],
     },

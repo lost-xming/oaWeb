@@ -10,6 +10,9 @@ import {
     FormFileItem,
 	FormRadioItem,
 	FormTreeSelectItem,
+	FormRadioGroupItem,
+	FormRadioColorItem,
+	FormTreeSelectNodeItem,
 } from '../formItem';
 import './index.less';
 
@@ -48,8 +51,14 @@ class SearchCom extends Component {
 	                return FormFileItem(item, defaultValue);
 	            case 'radio':
 					return FormRadioItem(item, defaultValue);
+				case 'radioGroup':
+					return FormRadioGroupItem(item, defaultValue);
+				case 'radioColor':
+					return FormRadioColorItem(item, defaultValue);
 				case 'treeSelect':
 					return FormTreeSelectItem(item, defaultValue);
+				case 'treeSelectNode':
+					return FormTreeSelectNodeItem(item, defaultValue);
 	            default:
 	                return null;
 	        }

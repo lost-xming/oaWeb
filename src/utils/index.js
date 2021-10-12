@@ -141,3 +141,69 @@ export const statusArr = [
 		color: '#389e0d',
 	},
 ];
+
+export const projectStatus = [
+	{
+		label: '进行中',
+		value: '1',
+		color: '#1890ff',
+	},
+	{
+		label: '已完成',
+		value: '2',
+		color: '#389e0d',
+	},
+	{
+		label: '已延期',
+		value: '3',
+		color: '#fadb14',
+	},
+	{
+		label: '已取消',
+		value: '4',
+		color: '#cf1322',
+	},
+];
+
+export const colorList = [
+	{
+		label: 0,
+		value: '#f5222d',
+	},
+	{
+		label: 1,
+		value: '#fa8c16',
+	},
+	{
+		label: 2,
+		value: '#faad14',
+	},
+	{
+		label: 3,
+		value: '#fadb14',
+	},
+	{
+		label: 4,
+		value: '#a0d911',
+	},
+	{
+		label: 5,
+		value: '#52c41a',
+	},
+	{
+		label: 6,
+		value: '#13c2c2',
+	},
+	{
+		label: 7,
+		value: '#1890ff',
+	},
+	{
+		label: 8,
+		value: '#722ed1',
+	},
+	{
+		label: 9,
+		value: '#eb2f96',
+	},
+];

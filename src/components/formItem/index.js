@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Form, Select, DatePicker, Upload, Button, Radio, TreeSelect, Image } from 'antd';
+import { Input, Form, Select, DatePicker, Upload, Button, Radio, TreeSelect, Image, Tag } from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import './index.css';
@@ -176,7 +176,7 @@ export const FormDesSelectItem = (item = {}, defaultValue = {}) => {
 };
 
 export const FormTimerItem = (item = {}, defaultValue = {}) => {
-    const { required, validator, onChange, name, showTime = false, label, extra, disabled, others = {} } = item;
+    const { required, validator, onChange, name, label, extra, disabled, others = {} } = item;
     const rules = validator ? [{ validator }] : [{ type: 'object', required, message: `请输入${label}` }];
     const onChangeFun = onChange || noFun;
     return (
@@ -192,9 +192,8 @@ export const FormTimerItem = (item = {}, defaultValue = {}) => {
             <DatePicker
                 className="date_picker_style"
                 disabled={disabled}
-                showTime={showTime}
                 onChange={(value, timer) => onChangeFun(value, timer, item)}
-                format={showTime ? Format2 : Format}
+                format={Format}
             />
         </Form.Item>
     );
@@ -330,6 +329,60 @@ export const FormRadioItem = (item = {}, defaultValue = {}) => {
                     return <Radio key={`${index}_radio`} value={it.value}>{it.label}</Radio>;
                 })}
             </Radio.Group>
+        </Form.Item>
+    );
+};
+
+export const FormRadioColorItem = (item = {}, defaultValue = {}) => {
+    const { required, validator, onChange, name, label, extra, disabled, others = {}, arr = [] } = item;
+    const onChangeFun = onChange || noFun;
+    const rules = validator ? [{ validator }] : [{ required, message: `请输入${label}` }];
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            name={name}
+            required={required}
+            initialValue={defaultValue[name]}
+            extra={extra}
+            rules={rules}
+            {...others}
+        >
+            <Radio.Group disabled={disabled} onChange={onChangeFun}>
+                {arr.map((it, index) => {
+                    return (
+                        <Radio key={`${index}_radio`} value={it.value}>
+                            <Tag className="tag_item" color={it.value}>{it.value}</Tag>
+                        </Radio>
+                    );
+                })}
+            </Radio.Group>
+        </Form.Item>
+    );
+};
+
+export const FormRadioGroupItem = (item = {}, defaultValue = {}) => {
+    const { required, validator, onChange, name, label, extra, disabled, others = {}, arr = [] } = item;
+    const onChangeFun = onChange || noFun;
+    const rules = validator ? [{ validator }] : [{ required, message: `请输入${label}` }];
+    return (
+        <Form.Item
+            key={name}
+            label={label}
+            name={name}
+            required={required}
+            initialValue={defaultValue[name]}
+            extra={extra}
+            rules={rules}
+            {...others}
+        >
+            <Radio.Group
+                disabled={disabled}
+                options={arr}
+                onChange={onChangeFun}
+                optionType="button"
+                buttonStyle="solid"
+            />
         </Form.Item>
     );
 };
@@ -484,15 +537,56 @@ export const FormTreeSelectItem = (item = {}, defaultValue = {}) => {
                 treeDefaultExpandAll
                 onChange={onChangeFun}
                 multiple={multiple}
-            >
-                {arr.map((it) => {
+                treeData={arr}
+            />
+                {/* {arr.map((it) => {
                     return (
                         <TreeNode key={it.id} value={it.id} title={it.name}>
                             {it.children && Array.isArray(it.children) && renderChildren(it.children)}
                         </TreeNode>
                     );
                 })}
-            </TreeSelect>
+             </TreeSelect> */}
+        </Form.Item>
+    );
+};
+
+export const FormTreeSelectNodeItem = (item = {}, defaultValue = {}) => {
+    const {
+        required,
+        validator,
+        onChange,
+        placeholder,
+        name,
+        label,
+        arr = [],
+        extra,
+        others = {},
+    } = item;
+    const placeholderStr = placeholder || `请选择${label}`;
+    const onChangeFun = onChange || noFun;
+    const rules = validator ? [{ validator }] : [{ required, message: `请选择${label}` }];
+    return (
+        <Form.Item
+            key={name}
+            name={name}
+            label={label}
+            extra={extra}
+            initialValue={defaultValue[name]}
+            rules={rules}
+            {...others}
+        >
+            <TreeSelect
+                showSearch
+                style={{ width: '100%' }}
+                dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                placeholder={placeholderStr}
+                allowClear
+                treeDefaultExpandAll
+                onChange={onChangeFun}
+                treeData={arr}
+                treeCheckable
+            />
         </Form.Item>
     );
 };
