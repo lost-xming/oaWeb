@@ -152,8 +152,8 @@ class Process extends React.Component {
     render() {
         return (
             <div className="process_page">
-                {this._renderTabs()}
-                {this._renderTab1()}
+                {/* {this._renderTabs()} */}
+                {/* {this._renderTab1()} */}
             </div>
         );
     }

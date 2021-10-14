@@ -1,6 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
-import { Calendar, Badge, Select, Row, Col } from 'antd';
+import { Calendar, Badge, Select } from 'antd';
+import { CalendarFilled } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import './index.less';
@@ -108,7 +109,7 @@ class CalendarCom extends React.Component {
                         months.push(localeData.monthsShort(current));
                     }
                     for (let index = start; index < end; index++) {
-                        monthOptions.push(
+                        monthOptions.unshift(
                             <Select.Option className="month-item" key={`${index}`}>
                                 {months[index]}
                             </Select.Option>,
@@ -117,21 +118,25 @@ class CalendarCom extends React.Component {
                     const month = value.month();
                     const year = value.year();
                     const options = [];
-                    for (let i = year - 10; i < year + 10; i += 1) {
-                        options.push(
+                    for (let i = year - 40; i <= moment().year(); i += 1) {
+                        options.unshift(
                             <Select.Option key={i} value={i} className="year-item">
-                                {i}
+                                {i}年
                             </Select.Option>,
                         );
                     }
                     return (
                         <div className="calendar_top">
                             <div className="home_right_list_left">
-                                <span className="calendar_top_left">{moment().format('dddd')}</span>
+                                <span className="calendar_top_left">
+                                    <CalendarFilled className="calendar_top_left_icon" />
+                                    {moment().format('dddd')}
+                                </span>
                                 <span>{moment().format('YYYY年MM月DD日')}</span>
                             </div>
                             <div>
                                 <Select
+                                    style={{ width: 100, marginRight: 10 }}
                                     dropdownMatchSelectWidth={false}
                                     onChange={(newYear) => {
                                         const now = value.clone().year(newYear);
@@ -141,6 +146,7 @@ class CalendarCom extends React.Component {
                                     {options}
                                 </Select>
                                 <Select
+                                    style={{ width: 100, marginRight: 10 }}
                                     dropdownMatchSelectWidth={false}
                                     value={String(month)}
                                     onChange={(selectedMonth) => {

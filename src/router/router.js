@@ -5,10 +5,12 @@ const Login = asyncComponent(() => import('../app/login/index'));
 const Department = asyncComponent(() => import('../app/department/index'));
 const Staff = asyncComponent(() => import('../app/staff/index'));
 const Task = asyncComponent(() => import('../app/task/index'));
-const Process = asyncComponent(() => import('../app/process/index'));
+// const Process = asyncComponent(() => import('../app/process/index'));
 const ProcessSetting = asyncComponent(() => import('../app/process/setting'));
 const TaskDetail = asyncComponent(() => import('../app/task/detail'));
 const Project = asyncComponent(() => import('../app/project/index'));
+const ProjectDetail = asyncComponent(() => import('../app/project/detail'));
+const Schedule = asyncComponent(() => import('../app/project/schedule'));
 
 export const appRouters = [
     {
@@ -22,7 +24,7 @@ export const appRouters = [
         exact: true,
         path: '/process',
         title: '申请',
-        component: Process,
+        component: Task,
     },
     {
         path: '/project',
@@ -34,9 +36,9 @@ export const appRouters = [
                 component: Project,
             },
             {
-                path: '/project/task',
+                path: '/project/manageDetail',
                 title: '任务管理',
-                component: Task,
+                component: ProjectDetail,
             },
             {
                 path: '/project/taskDetail',
@@ -45,9 +47,9 @@ export const appRouters = [
                 component: TaskDetail,
             },
             {
-                path: '/project/logs',
+                path: '/project/schedule',
                 title: '日志管理',
-                component: Home,
+                component: Schedule,
             },
         ],
     },

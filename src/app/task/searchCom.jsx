@@ -140,7 +140,7 @@ class SearchCom extends React.Component {
         return (
             <div className="search_com">
                 <Form ref={this.formRef} onFinish={this.onFinish} {...formItemLayout(6, 15)}>
-                    <div className={isNotShow ? 'search_com_content' : 'search_com_content2'}>
+                    <div className={isNotShow ? 'search_com_content' : 'search_com_content_all'}>
                         {this._renderItem(formArr, defaultValue)}
                         {this._renderItem(formArr2, defaultValue)}
                         <div className="search_com_btns">

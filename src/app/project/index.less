@@ -25,3 +25,144 @@
         margin-right: 10px;
     }
 }
+
+.project_detail ,.schedule_detail{
+    width: 90vw;
+    padding: 20px;
+    .detail_option1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        .option1_left {
+            width: 400px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .option1_left_img {
+            border-radius: 50%;
+        }
+        .option1_left_text {
+            padding-left: 10px;
+        }
+        .option1_left_h3 {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .option1_left_desc {
+            font-size: 12px;
+            color: #666;
+        }
+        .option1_right {
+            text-align: right;
+            .ant-btn {
+                color: #666;
+            }
+        }
+    }
+    .detail_option2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .option2_left {
+            flex: 1;
+            max-width: 900px;
+        }
+        .option2_right{
+            width: 300px;
+            flex-shrink: 0;
+        }
+        .option2_title {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .option2_value {
+            font-size: 14px;
+            color: #333;
+        }
+    }
+    .list_box {
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+    }
+    .ant-tabs-nav {
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .item_content {
+        border-radius: 5px;
+        padding:10px;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        .ant-col {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .rand_img {
+        border-radius: 50%;
+    }
+    .item_content_icon {
+        color: #aaa;
+        margin-right: 10px;
+    }
+    .pagination_content {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.schedule_detail {
+    display: flex;
+    background-color: #fff;
+    border-radius: 5px;
+    .card_left {
+        width: 300px;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        padding-right: 10px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+    .schedule_title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .schedule_member {
+        padding-left: 10px;
+    }
+    .schedule_member_checkbox {
+        .ant-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            .ant-checkbox {
+                top: 0 !important;
+            }
+        }
+        margin-bottom: 10px;
+        .checkbox_item{
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .schedule_member_checkbox_img {
+        border-radius: 50%;
+        padding-right: 10px;
+    }
+    .list_box {
+        flex:1;
+    }
+    .list_box_btns {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+}
