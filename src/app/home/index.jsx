@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {
     SoundOutlined,
     AmazonOutlined,
-    CheckCircleOutlined,
     AppstoreFilled,
     DatabaseFilled,
     ProjectFilled,
@@ -35,7 +34,15 @@ class Home extends React.Component {
     initData = async () => {};
 
     render() {
-        const data = ['请假申请', '请假申请', '请假申请', '请假申请', '请假申请'];
+        const data = [
+            '请假申请',
+            '请假申请',
+            '请假申请',
+            '请假申请',
+            '请假申请',
+            '请假申请',
+            '请假申请',
+        ];
         return (
             <div className="homeStyle">
                 <div className="banner_box">
@@ -62,24 +69,42 @@ class Home extends React.Component {
                                 公告
                             </div>
                             <div className="sound_box_content">
-                                <Alert
-                                    className="sound_info"
-                                    message="国庆放假通知"
-                                    description="国庆放假通知详情国庆放假通知详情国庆放假通知详情国庆放假通知详情"
-                                    type="info"
-                                />
-                                <Alert
-                                    className="sound_info"
-                                    message="国庆放假通知"
-                                    description="国庆放假通知详情国庆放假通知详情国庆放假通知详情国庆放假通知详情"
-                                    type="info"
-                                />
-                                <Alert
-                                    className="sound_info"
-                                    message="国庆放假通知"
-                                    description="国庆放假通知详情国庆放假通知详情国庆放假通知详情国庆放假通知详情"
-                                    type="info"
-                                />
+                                <div className="sound_box_content_box">
+                                    <div className="sound_box_content_header">
+                                        <span>考勤与休假管理制度</span>
+                                        <span className="sound_box_content_desc">2021.10.12</span>
+                                    </div>
+                                    <div className="sound_box_content_desc">
+                                        为维护公司正常的工作秩序，增强员工的劳动
+                                    </div>
+                                </div>
+                                <div className="sound_box_content_box">
+                                    <div className="sound_box_content_header">
+                                        <span>考勤与休假管理制度</span>
+                                        <span className="sound_box_content_desc">2021.10.12</span>
+                                    </div>
+                                    <div className="sound_box_content_desc">
+                                        为维护公司正常的工作秩序，增强员工的劳动
+                                    </div>
+                                </div>
+                                <div className="sound_box_content_box">
+                                    <div className="sound_box_content_header">
+                                        <span>考勤与休假管理制度</span>
+                                        <span className="sound_box_content_desc">2021.10.12</span>
+                                    </div>
+                                    <div className="sound_box_content_desc">
+                                        为维护公司正常的工作秩序，增强员工的劳动
+                                    </div>
+                                </div>
+                                <div className="sound_box_content_box">
+                                    <div className="sound_box_content_header">
+                                        <span>考勤与休假管理制度</span>
+                                        <span className="sound_box_content_desc">2021.10.12</span>
+                                    </div>
+                                    <div className="sound_box_content_desc">
+                                        为维护公司正常的工作秩序，增强员工的劳动
+                                    </div>
+                                </div>
                             </div>
                         </Col>
                     </Row>

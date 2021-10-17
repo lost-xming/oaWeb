@@ -5,7 +5,7 @@ export default {
 		listData: [
 			{
 				id: 0,
-				name: '项目一', // 项目名称
+				name: '新都汇停车楼项目', // 项目名称
 				status: '1',	// 项目状态 utils  中 projectStatus
 				progress: '60', // 项目进度
 				updateTime: '2021-10-12 20:20:10', // 最后更新时间
@@ -83,7 +83,7 @@ export default {
 			},
 			{
 				id: 1,
-				name: '项目一', // 项目名称
+				name: '蔡甸区停车泊位及设施建设工程项目', // 项目名称
 				status: '2',	// 项目状态 utils  中 projectStatus
 				progress: '100', // 项目进度
 				updateTime: '2021-10-12 20:20:10', // 最后更新时间
@@ -161,7 +161,7 @@ export default {
 			},
 			{
 				id: 2,
-				name: '项目一', // 项目名称
+				name: '测试项目一', // 项目名称
 				status: '3',	// 项目状态 utils  中 projectStatus
 				progress: '60', // 项目进度
 				updateTime: '2021-10-12 20:20:10', // 最后更新时间
@@ -239,7 +239,7 @@ export default {
 			},
 			{
 				id: 3,
-				name: '项目一', // 项目名称
+				name: '测试项目二', // 项目名称
 				status: '4',	// 项目状态 utils  中 projectStatus
 				progress: '60', // 项目进度
 				updateTime: '2021-10-12 20:20:10', // 最后更新时间

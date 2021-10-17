@@ -6,7 +6,28 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         padding: 30px 20px;
-        text-align: center;
+        background-color: #fff;
+        .project_statistic_header {
+            margin-bottom: 20px;
+        }
+        .project_statistic_icon {
+            color: #aaa;
+            margin-right: 6px;
+        }
+        .project_statistic_content {
+            text-align: center;
+            .project_statistic_content_title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .rand {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
     }
     .btns_box {
         padding-top: 20px;
@@ -29,6 +50,13 @@
 .project_detail ,.schedule_detail{
     width: 90vw;
     padding: 20px;
+    .project_detail_top {
+        padding: 20px;
+        border: 1px solid #E8E8E8;
+        background-color: #fff;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
     .detail_option1 {
         display: flex;
         justify-content: space-between;
@@ -86,24 +114,32 @@
     .list_box {
         padding: 20px;
         border-radius: 5px;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
+        // border: 1px solid #E8E8E8;
+        // box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        // background-color: #fff;
     }
     .ant-tabs-nav {
         margin-bottom: 20px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        // border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
     .item_content {
         border-radius: 5px;
         padding:10px;
         align-items: center;
+        background-color: #fff;
         margin-bottom: 20px;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        border: 1px solid #E8E8E8;
+        // box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
         .ant-col {
             padding: 5px 0;
             display: flex;
             align-items: center;
         }
+    }
+    .rand_img_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .rand_img {
         border-radius: 50%;
@@ -144,6 +180,7 @@
             display: flex;
             align-items: center;
             .ant-checkbox {
+                display: none;
                 top: 0 !important;
             }
         }

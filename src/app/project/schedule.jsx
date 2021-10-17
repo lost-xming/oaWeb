@@ -51,27 +51,27 @@ class Schedule extends React.Component {
                 className="item_content"
                 style={{ borderLeft: `4px solid ${item.tag}` }}>
                 <Col span={7}>
-                    <span className="item_content_icon">
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.FolderOpenFilled)}
-                    </span>
+                    </span> */}
                     {item.title}
                 </Col>
                 <Col span={2}>
                     <Tag color="green">{item.status}</Tag>
                 </Col>
-                <Col span={5}>
-                    <span className="item_content_icon">
+                <Col span={4}>
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.BellFilled)}
-                    </span>
+                    </span> */}
                     {item.endTime}截止
                 </Col>
                 <Col span={2}>
                     <Tag color="#f50">{item.timerType}</Tag>
                 </Col>
                 <Col span={4}>
-                    <span className="item_content_icon">
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.CodeSandboxSquareFilled)}
-                    </span>
+                    </span> */}
                     {item.name}
                 </Col>
                 <Col span={1}>
@@ -86,7 +86,7 @@ class Schedule extends React.Component {
                     </span>
                     {item.link}
                 </Col>
-                <Col span={2}>
+                <Col span={2} className="rand_img_box">
                     <Image width={40} className="rand_img" src={item.userInfo.url} />
                 </Col>
             </Row>
@@ -226,6 +226,7 @@ class Schedule extends React.Component {
                             <Checkbox value="A">
                                 <div className="checkbox_item">
                                     <Image
+                                        preview={false}
                                         className="schedule_member_checkbox_img"
                                         width={40}
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -238,6 +239,7 @@ class Schedule extends React.Component {
                             <Checkbox value="V">
                                 <div className="checkbox_item">
                                     <Image
+                                        preview={false}
                                         className="schedule_member_checkbox_img"
                                         width={40}
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -250,6 +252,7 @@ class Schedule extends React.Component {
                             <Checkbox value="D">
                                 <div className="checkbox_item">
                                     <Image
+                                        preview={false}
                                         className="schedule_member_checkbox_img"
                                         width={40}
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -262,6 +265,7 @@ class Schedule extends React.Component {
                             <Checkbox value="E">
                                 <div className="checkbox_item">
                                     <Image
+                                        preview={false}
                                         className="schedule_member_checkbox_img"
                                         width={40}
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -274,6 +278,7 @@ class Schedule extends React.Component {
                             <Checkbox value="F">
                                 <div className="checkbox_item">
                                     <Image
+                                        preview={false}
                                         className="schedule_member_checkbox_img"
                                         width={40}
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"

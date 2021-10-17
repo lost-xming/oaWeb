@@ -5,21 +5,15 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import {
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
 	DownOutlined,
 	LogoutOutlined,
 	EditOutlined,
 	ExclamationCircleOutlined,
 } from '@ant-design/icons';
-import Breadcrumb from '@/components/breadcrumb';
-import imgbase from '../../images/image.png';
+import imgbase from '../../images/login/logo.png';
 import { appRouters } from '../../router/router';
 import { clearUserInfo, getUserInfo } from '../../utils/localStorageSet';
-// import { getStoreUserInfo } from '@/utils/index';
-// import MessageList from '../messageList';
 import './index.less';
-// import HeaderImg from '../../images/login/logo.png';
 
 const { SubMenu } = Menu;
 const { Header } = Layout;

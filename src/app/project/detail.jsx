@@ -69,27 +69,27 @@ class Detail extends React.Component {
                 className="item_content"
                 style={{ borderLeft: `4px solid ${item.tag}` }}>
                 <Col span={7}>
-                    <span className="item_content_icon">
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.FolderOpenFilled)}
-                    </span>
+                    </span> */}
                     {item.title}
                 </Col>
                 <Col span={2}>
                     <Tag color="green">{item.status}</Tag>
                 </Col>
                 <Col span={5}>
-                    <span className="item_content_icon">
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.BellFilled)}
-                    </span>
+                    </span> */}
                     {item.endTime}截止
                 </Col>
                 <Col span={2}>
                     <Tag color="#f50">{item.timerType}</Tag>
                 </Col>
                 <Col span={4}>
-                    <span className="item_content_icon">
+                    {/* <span className="item_content_icon">
                         {React.createElement(Icon.CodeSandboxSquareFilled)}
-                    </span>
+                    </span> */}
                     {item.name}
                 </Col>
                 <Col span={1}>
@@ -177,8 +177,8 @@ class Detail extends React.Component {
                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     />
                     <div className="option1_left_text">
-                        <div className="option1_left_h3">AxureUX网站改版</div>
-                        <div className="option1_left_desc">专业的交互原型素材原创分享平台</div>
+                        <div className="option1_left_h3">新都汇停车楼项目</div>
+                        <div className="option1_left_desc">新都汇停车楼项目详情</div>
                     </div>
                 </div>
                 <Input.Group compact className="option1_right">
@@ -339,9 +339,10 @@ class Detail extends React.Component {
     render() {
         return (
             <div className="project_detail">
-                {this._renderOption1()}
-                {this._renderOption2()}
-                <Divider />
+                <div className="project_detail_top">
+                    {this._renderOption1()}
+                    {this._renderOption2()}
+                </div>
                 <div className="list_box">
                     {this._renderTabs()}
                     {this._renderList()}

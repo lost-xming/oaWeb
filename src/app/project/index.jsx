@@ -1,13 +1,14 @@
 import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
-import { Statistic, Input, Row, Col, Button, Drawer, message } from 'antd';
-import { EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { Statistic, Input, Row, Col, Button, Drawer, message, Tabs } from 'antd';
+import { AppstoreFilled, PlusOutlined } from '@ant-design/icons';
 import ProjectTable from '../../components/tableBox/project';
 import { projectStatus } from '../../utils/index';
 import AddForm from './addForm';
 import './index.less';
 
+const { TabPane } = Tabs;
 class Project extends React.Component {
     static propTypes = {
         departmentList: PropType.array,
@@ -118,26 +119,57 @@ class Project extends React.Component {
         this.initData();
     };
 
+    _renderIconRadio(name, type) {
+        const { color } = projectStatus[type];
+        return (
+            <div className="project_statistic_content_title">
+                <div
+                    className="rand"
+                    style={{
+                        backgroundColor: color,
+                    }}
+                />
+                <div>{name}</div>
+            </div>
+        );
+    }
+
     _renderStatistic() {
         const { inProgressArr, completedArr, postponedArr, cancelledArr } = this.state;
         const { listData } = this.props;
         return (
             <div className="project_statistic">
-                <Row gutter={20}>
+                <div className="project_statistic_header">
+                    <AppstoreFilled className="project_statistic_icon" />
+                    项目管理
+                </div>
+                <Row gutter={20} className="project_statistic_content">
                     <Col span={5}>
                         <Statistic title="项目总数" value={listData.length} />
                     </Col>
                     <Col span={5}>
-                        <Statistic title="进行中" value={inProgressArr.length} />
+                        <Statistic
+                            title={this._renderIconRadio('进行中', 0)}
+                            value={inProgressArr.length}
+                        />
                     </Col>
                     <Col span={5}>
-                        <Statistic title="已完成" value={completedArr.length} />
+                        <Statistic
+                            title={this._renderIconRadio('已完成', 1)}
+                            value={completedArr.length}
+                        />
                     </Col>
                     <Col span={5}>
-                        <Statistic title="已延期" value={postponedArr.length} />
+                        <Statistic
+                            title={this._renderIconRadio('已延期', 2)}
+                            value={postponedArr.length}
+                        />
                     </Col>
                     <Col span={4}>
-                        <Statistic title="已取消" value={cancelledArr.length} />
+                        <Statistic
+                            title={this._renderIconRadio('已取消', 3)}
+                            value={cancelledArr.length}
+                        />
                     </Col>
                 </Row>
             </div>
@@ -170,18 +202,11 @@ class Project extends React.Component {
         ];
         return (
             <div className="btns_box">
-                <Input.Group compact>
-                    {statusArr.map((item, index) => {
-                        return (
-                            <Button
-                                key={`${index}_btn`}
-                                onClick={() => this.onStatusClick(item.value)}
-                                type={statusTab === item.value ? 'primary' : 'default'}>
-                                {item.label}
-                            </Button>
-                        );
+                <Tabs activeKey={statusTab} onChange={this.onStatusClick}>
+                    {statusArr.map((item) => {
+                        return <TabPane tab={item.label} key={`${item.value}`} />;
                     })}
-                </Input.Group>
+                </Tabs>
                 <Button type="primary" onClick={this.onAddNew} icon={<PlusOutlined />}>
                     创建项目
                 </Button>

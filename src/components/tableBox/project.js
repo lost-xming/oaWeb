@@ -64,19 +64,21 @@ class TableBox extends Component {
 	    const tableColums = [
 	        {
 	            title: '基本信息',
-	            align: 'center',
+				align: 'center',
+				width: 150,
 				dataIndex: 'title',
 				render: (text, row) => {
 					return (
 						<div className="title_box">
 							<Image
+								className="title_box_img"
 								width={40}
 								preview={false}
 								src={row.logo}
 							/>
 							<div className="title_content">
-								<div>{row.name}</div>
-								<div>{row.describe}</div>
+								<div className="title_content_name">{row.name}</div>
+								<div className="title_content_desc">{row.describe}</div>
 							</div>
 						</div>
 					);
@@ -142,7 +144,8 @@ class TableBox extends Component {
 			},
 			{
 	            title: '操作',
-	            align: 'center',
+				align: 'center',
+				width: 120,
 				dataIndex: 'action',
 				render: (value, row) => {
 					return (

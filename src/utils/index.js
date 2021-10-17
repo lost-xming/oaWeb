@@ -146,22 +146,22 @@ export const projectStatus = [
 	{
 		label: '进行中',
 		value: '1',
-		color: '#1890ff',
+		color: '#2868F2',
 	},
 	{
 		label: '已完成',
 		value: '2',
-		color: '#389e0d',
+		color: '#6DD400',
 	},
 	{
 		label: '已延期',
 		value: '3',
-		color: '#fadb14',
+		color: '#F7B500',
 	},
 	{
 		label: '已取消',
 		value: '4',
-		color: '#cf1322',
+		color: '#FA6400',
 	},
 ];
 
