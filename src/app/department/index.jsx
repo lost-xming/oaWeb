@@ -136,7 +136,9 @@ class Department extends React.Component {
                 columns={columns}
                 expandable={{
                     expandedRowKeys: expandedRows,
-                    expandedRowRender: this._renderTables(columns, data.children),
+                    expandedRowRender: data.children
+                        ? this._renderTables(columns, data.children)
+                        : null,
                     onExpandedRowsChange: this.onRowExpandedClick,
                 }}
                 rowKey={(record) => {

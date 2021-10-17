@@ -537,16 +537,16 @@ export const FormTreeSelectItem = (item = {}, defaultValue = {}) => {
                 treeDefaultExpandAll
                 onChange={onChangeFun}
                 multiple={multiple}
-                treeData={arr}
-            />
-                {/* {arr.map((it) => {
+                // treeData={arr}
+            >
+                {arr.map((it) => {
                     return (
                         <TreeNode key={it.id} value={it.id} title={it.name}>
                             {it.children && Array.isArray(it.children) && renderChildren(it.children)}
                         </TreeNode>
                     );
                 })}
-             </TreeSelect> */}
+             </TreeSelect>
         </Form.Item>
     );
 };

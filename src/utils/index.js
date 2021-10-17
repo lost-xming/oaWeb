@@ -98,10 +98,14 @@ export const setTreeDataFun = (arr, id = '') => {
 			if (childrenArr.length) {
 				childrenArr.map(it => {
 					const childrenItemArr = setTreeDataFun(arr, it.id);
-					it.children = childrenItemArr;
+					if (childrenItemArr.length) {
+						it.children = childrenItemArr;
+					 }
 					return null;
 				});
-				item.children = childrenArr;
+				if (childrenArr.length) {
+					item.children = childrenArr;
+				}
 			}
 		}
 		if (item.parent === id) {
