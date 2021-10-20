@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
@@ -12,6 +12,7 @@ class LayoutCom extends Component {
     static propTypes = {
         setAddUserInfo: PropTypes.func,
         getUserProductList: PropTypes.func,
+        children: PropTypes.array.isRequired,
     };
 
     static defaultProps = {
@@ -23,8 +24,6 @@ class LayoutCom extends Component {
         super(props);
         this.state = {
             cerVisible: false,
-            loading: false,
-            siderRoute: [],
         };
     }
 
@@ -36,11 +35,8 @@ class LayoutCom extends Component {
 
     render() {
         const { children } = this.props;
-        const { cerVisible, loading, siderRoute } = this.state;
-        const hasLoading = !cerVisible && !loading;
-        if (loading) {
-            return null;
-        }
+        const { cerVisible } = this.state;
+        const hasLoading = !cerVisible;
         return (
             <Layout className="layout_box">
                 <Layout className="site-layout">

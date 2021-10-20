@@ -1,16 +1,16 @@
-import { asyncComponent } from './asyncComponent';
+import AsyncCom from './asyncCom';
 // import Home from '../app/home/index';
-const Home = asyncComponent(() => import('../app/home/index'));
-const Login = asyncComponent(() => import('../app/login/index'));
-const Department = asyncComponent(() => import('../app/department/index'));
-const Staff = asyncComponent(() => import('../app/staff/index'));
-const Task = asyncComponent(() => import('../app/task/index'));
-// const Process = asyncComponent(() => import('../app/process/index'));
-const ProcessSetting = asyncComponent(() => import('../app/process/setting'));
-const TaskDetail = asyncComponent(() => import('../app/task/detail'));
-const Project = asyncComponent(() => import('../app/project/index'));
-const ProjectDetail = asyncComponent(() => import('../app/project/detail'));
-const Schedule = asyncComponent(() => import('../app/project/schedule'));
+const Home = AsyncCom(() => import('../app/home/index'));
+const Login = AsyncCom(() => import('../app/login/index'));
+const Department = AsyncCom(() => import('../app/department/index'));
+const Staff = AsyncCom(() => import('../app/staff/index'));
+const Task = AsyncCom(() => import('../app/task/index'));
+// const Process = AsyncCom(() => import('../app/process/index'));
+const ProcessSetting = AsyncCom(() => import('../app/process/setting'));
+const TaskDetail = AsyncCom(() => import('../app/task/detail'));
+const Project = AsyncCom(() => import('../app/project/index'));
+const ProjectDetail = AsyncCom(() => import('../app/project/detail'));
+const Schedule = AsyncCom(() => import('../app/project/schedule'));
 
 export const appRouters = [
     {

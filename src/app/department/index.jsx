@@ -35,6 +35,7 @@ class Department extends React.Component {
     }
 
     componentDidMount() {
+        console.log(111);
         this.initData();
     }
 
