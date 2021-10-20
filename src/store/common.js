@@ -906,7 +906,7 @@ export default {
                 taskEndTime: '',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天', // 事由
+                cause: '调休2天', // 事由
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 0, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: 1, // 审批节点指针
@@ -947,7 +947,7 @@ export default {
                 taskEndTime: '2021-10-12',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天 撤销',
+                cause: '调休3天 撤销',
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 1, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: -1, // 审批节点指针
@@ -988,7 +988,7 @@ export default {
                 taskEndTime: '2021-10-13',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天 审核未通过',
+                cause: '调休3天 审核未通过',
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 2, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: -1, // 审批节点指针
@@ -1029,7 +1029,7 @@ export default {
                 taskEndTime: '2021-10-14',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天 审核未通过',
+                cause: '调休3天 审核未通过',
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 3, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: -1, // 审批节点指针
@@ -1185,7 +1185,7 @@ export default {
                 taskEndTime: '',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天',
+                cause: '调休2天',
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 0, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: 1, // 审批节点指针
@@ -1234,7 +1234,7 @@ export default {
                 taskEndTime: '',
                 startTime: '2021-10-15',
                 endTime: '2021-10-17',
-                cause: '调休0天 审批完成', // 事由
+                cause: '调休3天 审批完成', // 事由
                 evidence: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
                 status: 3, // 审批状态  0审核中 1已撤销 2审核未通过 3审核通过
                 statusStep: -1, // 审批节点指针

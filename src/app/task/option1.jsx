@@ -10,6 +10,7 @@ import FormCom from '../../components/searchCom/formCom';
 import FormDisCom from '../../components/searchCom/formDisCom';
 import imgbase from '../../images/image.png';
 import { getUserInfo } from '../../utils/localStorageSet';
+import logoImg from '../../images/login/logo.png';
 import './index.less';
 
 const { TabPane } = Tabs;
@@ -201,11 +202,11 @@ class TaskDetail extends React.Component {
                     <Image
                         width={24}
                         height={24}
-                        src="error"
+                        src={logoImg}
                         className="task_title_img"
                         fallback={imgbase}
                     />
-                    <span className="task_title_text">蔡甸城投智能交通公司</span>
+                    <span className="task_title_text">蔡甸城投智能交通</span>
                 </div>
                 <Divider dashed />
                 <div>
