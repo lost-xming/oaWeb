@@ -138,7 +138,7 @@ class HeaderCom extends React.Component {
 						className="home_title_img"
 						fallback={imgbase}
 					/>
-					<span className="home_title_text">蔡甸城投智能交通公司</span>
+					<span className="home_title_text">蔡甸城投智能交通</span>
 				</Col>
 				<Col span={12}>
 					{this._renderMenus()}

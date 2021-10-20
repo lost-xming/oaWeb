@@ -45,9 +45,11 @@ class LayoutCom extends Component {
             <Layout className="layout_box">
                 <Layout className="site-layout">
                     <HeaderCom />
-                    <Content className="site-layout-content">
-                        {hasLoading ? children : null}
-                    </Content>
+                    <div className="layout_content_bg">
+                        <Content className="site-layout-content">
+                            {hasLoading ? children : null}
+                        </Content>
+                    </div>
                     <FooterCom />
                 </Layout>
             </Layout>
